@@ -31,7 +31,7 @@ const Footer = () => {
           {/* Colonne 3 - Réseaux sociaux */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Réseaux</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               <a
                 href="https://gitlab.com/bilclever"
                 target="_blank"

@@ -16,7 +16,7 @@ const About = () => {
       id: 1,
       title: "Stagiaire Développeur Full Stack",
       company: "Kalamar",
-      period: "Juin 2025 - Aujourd'hui · 6 mois",
+      period: "Juin 2025 - Aout 2025 · 2 mois",
       location: "Lomé, Région Maritime, Togo",
       shortDescription: "Stage chez Kalamar, cabinet d'expertise en informatique et cartographie numérique intervenant dans plusieurs pays de la sous-région.",
       fullDescription: "Stage chez Kalamar, cabinet d'expertise en informatique et cartographie numérique intervenant dans plusieurs pays de la sous-région. Développement d'une application complète de suivi des performances sportives avec des fonctionnalités avancées de social networking et d'analytics.",
@@ -130,7 +130,7 @@ const About = () => {
                   {/* Technologies (toujours visible) */}
                   <div className="mb-4">
                     <h5 className="font-semibold text-gray-800 mb-2">Technologies utilisées :</h5>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {exp.technologies.map((tech, index) => (
                         <span 
                           key={index}

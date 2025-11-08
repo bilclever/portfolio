@@ -131,7 +131,7 @@ const Contact = () => {
             {/* Réseaux sociaux */}
             <div className="pt-4">
               <p className="text-sm text-gray-500 mb-3">Réseaux sociaux</p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 justify-center">
                 <a
                   href="https://gitlab.com/bilclever"
                   target="_blank"
