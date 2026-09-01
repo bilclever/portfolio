@@ -1,0 +1,883 @@
+/* ==============================
+   DESIGN SYSTEM
+   ============================== */
+:root {
+    --bg: #080d14;
+    --bg-elevated: #0e1420;
+    --bg-card: #111827;
+    --border: #1e2736;
+    --text: #e8edf5;
+    --text-muted: #64748b;
+    --text-subtle: #94a3b8;
+    --accent: #38bdf8;
+    --accent-dim: rgba(56, 189, 248, 0.12);
+    --radius: 8px;
+    --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --sidebar-w: 260px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* on gère le scroll manuellement */
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ==============================
+   LAYOUT : plein écran, deux colonnes fixes
+   ============================== */
+.layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==============================
+   SIDEBAR — fixe, pas de scroll
+   ============================== */
+.sidebar {
+    height: 100vh;
+    padding: 2.5rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-photo-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    flex-shrink: 0;
+    align-self: center;
+    transform: rotate(6deg);
+    transition: transform 0.3s ease;
+}
+
+.profile-photo-wrapper:hover {
+    transform: rotate(0deg);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.sidebar-info h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.role {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 0.4rem;
+}
+
+.sub-role {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+
+/* NAV */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.sidebar-nav a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.38rem 0.6rem;
+    border-radius: 5px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+}
+
+/* LIENS */
+.sidebar-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-links a:hover {
+    color: var(--accent);
+}
+
+.sidebar-links svg {
+    flex-shrink: 0;
+}
+
+/* ==============================
+   MAIN CONTENT — scroll sans barre visible
+   ============================== */
+.main-content {
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    /* Masquer la scrollbar — tous navigateurs */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE / Edge legacy */
+}
+
+.main-content::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Opera */
+}
+
+/* ==============================
+   SECTIONS
+   ============================== */
+.section {
+    scroll-margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.6rem;
+}
+
+/* BIO */
+.bio {
+    font-size: 1rem;
+    color: #b0bcd1;
+    line-height: 1.75;
+}
+
+/* LANGUES */
+.languages {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.lang-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.lang-dot--dim {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+}
+
+/* ==============================
+   STACK — logos + animation
+   ============================== */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1rem;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: techFadeIn 0.35s ease forwards;
+    animation-delay: calc(var(--i) * 0.045s + 0.05s);
+}
+
+@keyframes techFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tech-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.tech-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.tech-item:hover .tech-icon {
+    transform: translateY(-4px) scale(1.12);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+.tech-item span {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-align: center;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.tech-item:hover span {
+    color: var(--text);
+}
+
+/* ==============================
+   EXPÉRIENCE
+   ============================== */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experience-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+    gap: 1rem;
+}
+
+.exp-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.exp-company {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+.exp-desc {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-bottom: 0.9rem;
+}
+
+.exp-desc strong {
+    color: var(--text);
+}
+
+.exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.exp-tags span {
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+/* BADGE */
+.badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ==============================
+   PROJETS — flip 3D au hover
+   ============================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Conteneur flip — perspective 3D */
+.project-card {
+    perspective: 900px;
+    height: 200px;
+    cursor: default;
+}
+
+/* L'élément qui tourne */
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.project-card:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Face commune */
+.flip-front,
+.flip-back {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* FACE AVANT */
+.flip-front {
+    background: var(--bg-card);
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    gap: 0.5rem;
+}
+
+.project-header h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-shrink: 0;
+}
+
+.project-actions a {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.project-actions a:hover {
+    color: var(--accent);
+}
+
+.flip-front p {
+    font-size: 0.82rem;
+    color: var(--text-subtle);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin: 0.4rem 0 0.6rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.project-tags span {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+}
+
+/* FACE ARRIÈRE */
+.flip-back {
+    background: var(--bg-elevated);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.flip-back img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.flip-back-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+    background: linear-gradient(to top, rgba(8,13,20,0.95) 60%, transparent);
+}
+
+.flip-back-links a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.flip-back-links a:hover {
+    opacity: 0.75;
+}
+
+/* Face arrière sans image */
+.flip-back--noimg {
+    background: var(--bg-card);
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.3rem;
+}
+
+.flip-noimg-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.flip-back--noimg p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.flip-back--noimg .flip-back-links {
+    background: none;
+    padding: 0;
+    width: auto;
+}
+
+/* ==============================
+   CERTIFICATIONS
+   ============================== */
+.certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    gap: 1rem;
+}
+
+.cert-item.featured {
+    border-color: rgba(56, 189, 248, 0.25);
+    background: linear-gradient(135deg, var(--bg-card), rgba(56, 189, 248, 0.04));
+}
+
+.cert-body h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.cert-body p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+.cert-divider {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    padding: 0.6rem 0 0.2rem;
+}
+
+/* ==============================
+   CONTACT
+   ============================== */
+.contact-intro {
+    font-size: 0.9rem;
+    color: var(--text-subtle);
+    margin-bottom: 1.4rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-field label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.btn-submit {
+    align-self: flex-start;
+    background: var(--text);
+    color: var(--bg);
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.55rem 1.4rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover {
+    background: var(--accent);
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+.footer {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    align-items: center;
+}
+
+.footer p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ==============================
+   RESPONSIVE — burger menu mobile
+   ============================== */
+@media (max-width: 700px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* La sidebar devient invisible — tout est géré via le drawer */
+    .sidebar {
+        display: none;
+    }
+
+    /* Bouton burger fixe en haut à droite — visible car hors de .sidebar */
+    .burger-btn {
+        display: flex;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 200;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 9px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .burger-btn span {
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        background: var(--text-subtle);
+        border-radius: 2px;
+        transition: transform 0.25s, opacity 0.25s;
+        transform-origin: center;
+    }
+
+    .burger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger-btn.open span:nth-child(2) { opacity: 0; }
+    .burger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Drawer — petit panneau compact sous le bouton burger */
+    .sidebar-menu {
+        position: fixed;
+        top: 4rem;
+        right: 1rem;
+        width: 220px;
+        height: auto;
+        max-height: 80vh;
+        z-index: 150;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        display: flex !important;
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        overflow-y: auto;
+        scrollbar-width: none;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px) scale(0.97);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .sidebar-menu::-webkit-scrollbar { display: none; }
+
+    .sidebar-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Overlay léger — clic à l'extérieur pour fermer */
+    .drawer-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .drawer-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Nav verticale dans le drawer */
+    .sidebar-nav {
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-nav a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0;
+        font-size: 0.88rem;
+        border-left: 2px solid transparent;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+        border-left-color: var(--accent);
+        background: var(--accent-dim);
+        color: var(--accent);
+    }
+
+    /* Liens de contact verticaux */
+    .sidebar-links {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0;
+        margin-top: 0;
+        padding: 0.5rem 0;
+    }
+
+    .sidebar-links a {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* sidebar-topbar masqué — pas de barre sticky */
+    .sidebar-topbar { display: none; }
+
+    /* Grande photo dans le contenu */
+    .mobile-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0 1rem;
+        gap: 0.8rem;
+        text-align: center;
+    }
+
+    .mobile-hero .profile-photo-wrapper {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+        overflow: hidden;
+        background: var(--bg-card);
+    }
+
+    .mobile-hero .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .mobile-hero h2 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--text);
+    }
+
+    .mobile-hero p {
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .mobile-hero small {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+    }
+
+    .main-content {
+        height: auto;
+        overflow-y: visible;
+        padding: 0 1.2rem 3rem;
+        gap: 3rem;
+    }
+
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { height: 220px; }
+    .form-row { grid-template-columns: 1fr; }
+}
+
+/* Sur desktop, masquer les éléments mobile-only */
+@media (min-width: 701px) {
+    .burger-btn { display: none !important; }
+    .drawer-overlay { display: none !important; }
+    .sidebar-menu { display: none !important; }
+    .mobile-hero { display: none; }
+}
