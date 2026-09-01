@@ -395,7 +395,8 @@ body {
     border-radius: var(--radius);
 }
 
-.project-card:hover .flip-inner {
+.project-card:hover .flip-inner,
+.project-card.flipped .flip-inner {
     transform: rotateY(180deg);
 }
 
@@ -669,7 +670,7 @@ body {
     padding-top: 2rem;
     border-top: 1px solid var(--border);
     margin-top: auto;
-    align-items: center;
+    text-align: center;
 }
 
 .footer p {

@@ -3,11 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SANOUSSI Bilale — Développeur Full Stack & Mobile spécialisé en React, Flutter, Django et Spring Boot.">
-    <meta property="og:title" content="SANOUSSI Bilale | Développeur Full Stack & Mobile">
-    <meta property="og:description" content="Portfolio de SANOUSSI Bilale, développeur full stack & mobile basé à Lomé, Togo.">
+
+    <!-- SEO de base -->
+    <title>SANOUSSI Bilale | Développeur Full Stack & Mobile — Lomé, Togo</title>
+    <meta name="description" content="Portfolio de SANOUSSI Bilale, développeur Full Stack & Mobile basé à Lomé (Togo). Spécialisé en React, Flutter, Django, Spring Boot. Disponible pour stages, freelance et collaborations.">
+    <meta name="keywords" content="SANOUSSI Bilale, développeur full stack, développeur mobile, Flutter, React, Django, Spring Boot, Python, Java, PostgreSQL, Lomé, Togo, portfolio, IAI-TOGO">
+    <meta name="author" content="SANOUSSI Bilale">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bilclever.github.io/portfolio/">
+
+    <!-- Open Graph (partage Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website">
-    <title>SANOUSSI Bilale | Développeur Full Stack & Mobile</title>
+    <meta property="og:url" content="https://bilclever.github.io/portfolio/">
+    <meta property="og:title" content="SANOUSSI Bilale | Développeur Full Stack & Mobile">
+    <meta property="og:description" content="Portfolio de SANOUSSI Bilale, développeur Full Stack & Mobile basé à Lomé (Togo). React, Flutter, Django, Spring Boot.">
+    <meta property="og:image" content="https://bilclever.github.io/portfolio/image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="SANOUSSI Bilale Portfolio">
+
+    <!-- Twitter Card (partage Twitter/X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SANOUSSI Bilale | Développeur Full Stack & Mobile">
+    <meta name="twitter:description" content="Portfolio de SANOUSSI Bilale, développeur Full Stack & Mobile basé à Lomé (Togo). React, Flutter, Django, Spring Boot.">
+    <meta name="twitter:image" content="https://bilclever.github.io/portfolio/image.png">
+
+    <!-- JSON-LD : données structurées pour Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "SANOUSSI Bilale",
+        "url": "https://bilclever.github.io/portfolio/",
+        "image": "https://bilclever.github.io/portfolio/image.png",
+        "email": "sanoussibilale2@gmail.com",
+        "telephone": "+22870214908",
+        "jobTitle": "Développeur Full Stack & Mobile",
+        "description": "Développeur Full Stack passionné par la création d'applications web et mobiles modernes, spécialisé en React, Flutter, Django et Spring Boot.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lomé",
+            "addressCountry": "TG"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "IAI-TOGO",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lomé",
+                "addressCountry": "TG"
+            }
+        },
+        "knowsAbout": ["React", "Flutter", "Django", "Spring Boot", "FastAPI", "PostgreSQL", "Docker", "Git", "JavaScript", "Python", "Java"],
+        "sameAs": [
+            "https://github.com/bilclever"
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -355,6 +409,16 @@
     </div>
 
     <script>
+        // Flip cartes au tap (iOS/touch) — hover fonctionne sur desktop
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Sur desktop avec hover natif on ne fait rien
+                if (window.matchMedia('(hover: none)').matches) {
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Burger + drawer mobile
